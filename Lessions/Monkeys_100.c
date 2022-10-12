@@ -8,6 +8,8 @@ int main()
     {
         doors[i]=0;
     }
+
+    /*Now the main calculation part has started*/
     for(int i=1;i<=100;i++)
     {
         int a=0;
