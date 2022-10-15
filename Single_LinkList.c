@@ -223,17 +223,75 @@ void RemoveDublicate(struct node *head)
     Printelement(head);
 }
 
+void SaveAndExit(struct node *head, char *filename)
+{
+    int count=0;
+    FILE *fp = fopen(filename,"w");
+    if(fp==NULL)
+    {
+        printf("Exit --- Problem in saving");
+    }
+    else
+    {
+        while(head!=NULL || count>100)
+        {
+            if(head->key!=0)
+            {
+                fprintf(fp,"Key=%d  Value=<%d>\n",head->key,head->value);
+            }
+
+           head=head->next;
+           count++;
+        }
+        printf("\n Successfully Saved and Exit");
+    }
+    fclose(fp);
+
+}
+
+void ReadData(struct node *head,char *filename)
+{
+    struct node *new,*next;
+    new=head;
+    FILE *fp=fopen(filename,"a+");
+    char str[50], *subString;
+    if (fp==NULL) {
+        printf("file can't be opened \n");
+    }
+    else{
+        while (fgets(str, 50, fp) != NULL) {
+
+        subString = strtok(str,"<");
+        subString = strtok(NULL,">");
+        next=(struct node*)malloc(sizeof(struct node));
+        next->key=new->key+1;
+        next->value=atoi(subString);;
+        next->next=NULL;
+        new->next=next;
+        new=new->next;
+        }
+ 
+    fclose(fp);
+    }
+}
+
 void main()
 {
     struct node* head = NULL ;
     struct node *second= NULL;
     int check=1,valid=0;
 
+    char *filename="Data.txt";
+
     head=(struct node*)malloc(sizeof(struct node));
     head->key=0;
     head->value=0;
     head->next=NULL;
-    
+
+    ReadData(head,filename);
+    printf("\n LINK LIST IS READY \n");
+
+    Printelement(head);
 
     while(check==1 || check==2 || check==3|| check==4 || check==5)
     {
@@ -283,7 +341,12 @@ void main()
             case 5:
             RemoveDublicate(head);
             break;
-
+            case 6:
+            printf("\n Sort is yet to implement");
+            break;
+            case 7:
+            SaveAndExit(head,"Data.txt");
+            break;
             default:
             break;
 
