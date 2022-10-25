@@ -4,21 +4,27 @@
 void BinarySearch(int a[],int b,int low,int high)
 {
    int mid=(high+low)/2;
-   if(a[mid]==b)
+
+   while(mid>0 && mid<(sizeof(a)-1))
    {
-    printf("%d is in position %d",b,mid);
-   }
-   else
-   {
-    if(a[mid]>b)
-    {
-        BinarySearch(a,b,low,mid-1);
-    }
+    if(a[mid]==b)
+        {
+            printf("%d is in position %d",b,mid);
+        }
     else
-    {
-        BinarySearch(a,b,mid+1,high);
-    }
+        {
+            if(a[mid]>b)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+
    }
+   
 }
 
 
@@ -29,6 +35,4 @@ void main()
     printf("Enter the value to search\n");
     scanf("%d",&b);
     BinarySearch(a,b,0,9);
-
-
 }
