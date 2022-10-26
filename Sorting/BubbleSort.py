@@ -2,13 +2,11 @@ def BubbleSort(a):
     l=len(a)
     check=True
     count=0
-    while(check):
-        check=False
-        for j in range(1,l):
-            if(a[j-1]>a[j]):
-                check=True
+    for i in range(l):
+        for j in range(1,l-i):
+            if(a[j]<a[j-1]):
                 a[j],a[j-1]=a[j-1],a[j]
-            count+=1   
+            count+=1
     print(f"\n Bubble sort takes {count} counts")
     return a
 

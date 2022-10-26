@@ -46,7 +46,6 @@ class SortLib():
                     break
                 j-=1
                 
-                
         print(f"\n Insertion sort takes {counts} counts")
         return a1
 
@@ -57,8 +56,8 @@ if "__main__"==__name__:
     a2=[]
     a3=[]
     srt=SortLib()
-    # a1=srt.BubbleSort(Arr)
-    # print("\n After Bubble sort \n"+ str(a1))
+    a1=srt.BubbleSort(Arr)
+    print("\n After Bubble sort \n"+ str(a1))
     a3=srt.SelectionSort(Arr)
     print("\n After Selection sort \n"+ str(a3))
     a2=srt.InserstionSort(Arr)
