@@ -1,20 +1,34 @@
 #include<stdio.h>
 
+typedef enum{
+    FALSE  ,
+    TRUE 
+    } boolean;
+void swap(int *a,int *b)
+{
+    int temp=0;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+}
+
 void BubbleSort(int a[],int len)
 {
-    int check=1,temp=0;
-    while(check==1)
+    boolean check;
+    for(int i=0;i<len;i++)
     {
-        check=0;
-        for(int i=1;i<len;i++)
+        check=FALSE;
+        for(int j=1;j<len-i;j++)
         {
-            if(a[i-1]>a[i])
+            if(a[j]<a[j-1])
             {
-                temp=a[i-1];
-                a[i-1]=a[i];
-                a[i]=temp;
-                check=1;
+                swap(&a[j],&a[j-1]);
+                check=TRUE;
             }
+        }
+        if(check==FALSE)
+        {
+            break;
         }
     }
 }
