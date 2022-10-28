@@ -3,13 +3,15 @@
 
 void BinarySearch(int a[],int b,int low,int high)
 {
-   int mid=(high+low)/2;
+   int mid=0;
 
-   while(mid>0 && mid<(sizeof(a)-1))
+   while(low<=high)
    {
+    mid=low + (high-low)/2;
     if(a[mid]==b)
         {
-            printf("%d is in position %d",b,mid);
+            printf(" %d is in position %d",b,mid);
+            break;
         }
     else
         {

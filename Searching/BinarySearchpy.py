@@ -1,9 +1,8 @@
 SortedList=[12,15,23,45,58,98,144,214,245,289]
 
 def BinarySearch(List,Targ,start=0,end=0):
-    mid=int((start+end)/2)
-    while(mid>0 and mid<len(List)-1):
-        mid=int((start+end)/2)
+    while(start<=end):
+        mid=int(start+(end-start)/2)
         if(List[mid]==Targ):
             return mid
         else:
